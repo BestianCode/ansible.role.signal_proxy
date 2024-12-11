@@ -52,6 +52,15 @@ And a sample `playbook`:
 
 ```yaml
 - hosts:
+    - all
+  become: true
+  tags:
+    - basic
+    - init
+  roles:
+    - bestiancode.sysadmin.initial_setup
+
+- hosts:
     - web
   become: true
   tags:
