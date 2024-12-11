@@ -1,0 +1,25 @@
+---
+- name: Check if fullchain.pem exists
+  stat:
+    path: "/etc/letsencrypt/live/{{ signal_ssl_name }}/fullchain.pem"
+  register: fullchain_file
+
+- name: Check if privkey.pem exists
+  stat:
+    path: "/etc/letsencrypt/live/{{ signal_ssl_name }}/privkey.pem"
+  register: privkey_file
+
+- block:
+    - name: Deploy NGinx streams
+      template:
+        src: "{{ item }}"
+        dest: /etc/nginx/conf.d/
+        mode: 0644
+        owner: root
+        group: root
+      with_fileglob:
+        - "../templates/streams/*"
+  when:
+    - signal_ssl_name is defined
+    - fullchain_file.stat.exists
+    - privkey_file.stat.exists

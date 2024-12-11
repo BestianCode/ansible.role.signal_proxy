@@ -1,0 +1,33 @@
+---
+
+#
+# This role should be used together with ansible-galaxy collection bestiancode.nginx_ssl
+# Galaxy: https://galaxy.ansible.com/ui/repo/published/bestiancode/nginx_ssl/
+# GitHub: https://github.com/BestianCode/ansible.role.signal_proxy
+#
+# ansible-galaxy collection install bestiancode.nginx_ssl
+#
+# Here's a sample `requirements.yml` file:
+#
+# ```yaml
+# collections:
+#   - name: bestiancode.sysadmin
+#   - name: bestiancode.nginx_ssl
+#
+# roles:
+#   - name: bestiancode.signal_proxy
+# ```
+
+#
+# Signal proxy URL will be: your.host.domain:signal_port
+#                           vpn.example.com:4443
+#
+# If you use port 443, you have to disable catching of default port 443 by Nginx
+# catch_default_443: false
+# if not 443, you can use default catching
+# catch_default_443: true
+#
+signal_port: 4443
+
+signal_dns_name: "{{ ansible_host }}"
+signal_ssl_name: "{{ signal_dns_name }}"
