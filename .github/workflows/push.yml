@@ -26,8 +26,6 @@ jobs:
           python-version: '3.x'
       - run: pip install ansible
       - run: |
-          git config --global url."https://${{ github.token }}@github.com/".insteadOf "https://github.com/"
-      - run: |
           REPO_NAME=${GITHUB_REPOSITORY#*/}
           TAG_NAME=${GITHUB_REF#refs/tags/}
           ansible-galaxy role import --branch $TAG_NAME --token ${{ env.ANSIBLE_GALAXY_TOKEN }} ${{ github.repository_owner }} $REPO_NAME
