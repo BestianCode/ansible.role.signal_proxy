@@ -39,16 +39,7 @@ roles:
 
 ## Usage
 
-Here's a sample `inventory`:
-
-```ini
-squidTport: 45678
-proxyUsers:
-  - { user: "user1", password: "g7843bgb78ygyFTD56fv" }
-  - { user: "user2", password: "gyuv56dFGCrcghgcv6FF" }
-```
-
-And a sample `playbook`:
+Here's a sample `playbook`:
 
 ```yaml
 - hosts:
