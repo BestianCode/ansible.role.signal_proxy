@@ -111,6 +111,5 @@ signal_ssl_name: "{{ signal_dns_name }}"
 
 ## URLs
 
-- **GitHub**: https://github.com/BestianCode/ansible.role.anonymous_proxy
-- **Galaxy**: https://galaxy.ansible.com/ui/standalone/roles/BestianCode/anonymous_proxy
-
+- **GitHub**: https://github.com/BestianCode/ansible.role.signal_proxy
+- **Ansible Galaxy**: https://galaxy.ansible.com/bestiancode/signal_proxy
