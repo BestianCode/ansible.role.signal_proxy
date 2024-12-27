@@ -102,13 +102,20 @@
         proxy_pass            $name;
     }
 
-{% if signal_custom_ssl_nonterminated_port is defined %}
+{% if signal_custom_ssl_nonterminated_ports is defined %}
+{% for x in signal_custom_ssl_nonterminated_ports %}
     server {
-        listen                     {{signal_custom_ssl_nonterminated_port}};
-        listen                [::]:{{signal_custom_ssl_nonterminated_port}};
+        listen                     {{x.port}};
+        listen                [::]:{{x.port}};
 
         ssl_preread           on;
 
+{% if x.backend is defined %}
+        proxy_pass            x.backend;
+{% else %}
         proxy_pass            $name;
+{% endif %}
     }
+
+{% endfor %}
 {% endif %}
