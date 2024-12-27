@@ -31,3 +31,12 @@ signal_port: 4443
 
 signal_dns_name: "{{ ansible_host }}"
 signal_ssl_name: "{{ signal_dns_name }}"
+
+#
+# Can be used for custom SSL port and streams termination
+#
+#signal_custom_ssl_nonterminated_port: 444
+#signal_custom_ssl_streams:
+#  - name: "custom_proxy"
+#    dns: "my.domain.com"
+#    proxy: "127.0.0.1:8888"

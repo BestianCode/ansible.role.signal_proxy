@@ -14,9 +14,22 @@
         backend1.svr3.signal.org                svr31;
         backend2.svr3.signal.org                svr32;
         backend3.svr3.signal.org                svr33;
+{% if signal_custom_ssl_streams is defined %}
+{% for x in signal_custom_ssl_streams %}
+        {{x.dns}}                               {{x.name}};
+{% endfor %}
+{% endif %}
         default                                 deny;
     }
 
+{% if signal_custom_ssl_streams is defined %}
+{% for x in signal_custom_ssl_streams %}
+    upstream {{x.name}} {
+         server {{x.proxy}};
+    }
+
+{% endfor %}
+{% endif %}
     upstream signal-service {
          server chat.signal.org:443;
     }
@@ -88,3 +101,14 @@
 
         proxy_pass            $name;
     }
+
+{% if signal_custom_ssl_nonterminated_port is defined %}
+    server {
+        listen                     {{signal_custom_ssl_nonterminated_port}};
+        listen                [::]:{{signal_custom_ssl_nonterminated_port}};
+
+        ssl_preread           on;
+
+        proxy_pass            $name;
+    }
+{% endif %}
