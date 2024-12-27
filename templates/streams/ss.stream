@@ -111,7 +111,7 @@
         ssl_preread           on;
 
 {% if x.backend is defined %}
-        proxy_pass            x.backend;
+        proxy_pass            {{x.backend}};
 {% else %}
         proxy_pass            $name;
 {% endif %}
