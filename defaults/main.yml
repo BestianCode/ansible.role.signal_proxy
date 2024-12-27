@@ -36,8 +36,7 @@ signal_ssl_name: "{{ signal_dns_name }}"
 # Can be used for custom SSL port and streams termination
 #
 #signal_custom_ssl_nonterminated_ports:
-#   - name: vpn
-#     port: 444
+#   - port: 444
 #     backend: vpn # $name will be used if not defined
 #signal_custom_ssl_streams:
 #  - name: "vpn"
