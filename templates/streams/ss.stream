@@ -64,7 +64,9 @@
 
     server {
         listen                     {{signal_port}} ssl;
+{% if nginx_ipv6 | default(false) %}
         listen                [::]:{{signal_port}} ssl;
+{% endif %}
 
         ssl_preread           on;
 
