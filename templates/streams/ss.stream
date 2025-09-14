@@ -9,6 +9,7 @@
         contentproxy.signal.org                 content-proxy;
         sfu.voip.signal.org                     sfu;
         svr2.signal.org                         svr2;
+        svrb.signal.org                         svrb;
         updates.signal.org                      updates;
         updates2.signal.org                     updates2;
         default                                 deny;
@@ -48,6 +49,10 @@
 
     upstream svr2 {
         server svr2.signal.org:443;
+    }
+
+    upstream svrb {
+        server svrb.signal.org:443;
     }
 
     upstream updates {
