@@ -31,3 +31,7 @@ signal_port: 4443
 
 signal_dns_name: "{{ ansible_host }}"
 signal_ssl_name: "{{ signal_dns_name }}"
+
+# Signal proxy plain port (non-SSL) for proxying to backend (optional)
+# signal_port_plain: 18080
+# signal_host_plain: "127.0.0.1"

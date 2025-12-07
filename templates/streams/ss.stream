@@ -72,6 +72,9 @@
 {% if nginx_ipv6 | default(false) %}
         listen                [::]:{{signal_port}} ssl;
 {% endif %}
+{% if signal_host_plain is defined and signal_port_plain is defined %}
+        listen                {{signal_host_plain}}:{{signal_port_plain}};
+{% endif %}
 
         ssl_preread           on;
 
