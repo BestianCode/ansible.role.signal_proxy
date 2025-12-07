@@ -68,9 +68,11 @@
     }
 
     server {
+{% if signal_port is defined and signal_port != "" %}
         listen                     {{signal_port}} ssl;
 {% if nginx_ipv6 | default(false) %}
         listen                [::]:{{signal_port}} ssl;
+{% endif %}
 {% endif %}
 {% if signal_host_plain is defined and signal_port_plain is defined %}
         listen                {{signal_host_plain}}:{{signal_port_plain}};
